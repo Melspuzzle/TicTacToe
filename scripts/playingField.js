@@ -14,12 +14,12 @@ function handleClickChoosePlayer(event) {
     player1Element = elementId;
     selectedPlayers.push(elementId);
     console.log(`Player 1 ausgewählt: ${player1Element}`);
-    yourPlayers.insertAdjacentHTML("beforeend", "Player 1: " + player1Element);
+    textYourPlayers.insertAdjacentHTML("beforeend", "Player 1: " + player1Element);
   } else if (player2Element === "") {
     player2Element = elementId;
     selectedPlayers.push(elementId);
     console.log(`Player 2 ausgewählt: ${player2Element}`);
-    document.getElementById("yourPlayers").insertAdjacentHTML("beforeend", "  <br>Player 2: " + player2Element);
+    textYourPlayers.insertAdjacentHTML("beforeend", "  <br>Player 2: " + player2Element);
     setTimeout(() => {
       alert("Es wurden zwei Spieler ausgewählt, du kannst nun spielen. Viel Spaß!");
     }, 1000);
@@ -62,7 +62,7 @@ reset.addEventListener("click", () => {
   selectedPlayers = [];
   player1Element = "";
   player2Element = "";
-  yourPlayers.innerHTML = "";
+  textYourPlayers.innerHTML = "";
   reset.style.display = "none";
 }
 )
