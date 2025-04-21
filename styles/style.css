@@ -1,0 +1,134 @@
+html {
+    background-color: rgb(136, 182, 222);
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    text-align: center; 
+    font-size: 40px;
+    margin: 0; 
+    padding: 5px 0;
+}
+h1 {
+    padding: 5px 0;
+    margin: 0;
+}
+
+#start-button {
+    font-size: 40px;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#start-button:hover {
+    background-color: #45a049;
+}
+#frame {
+    display: none;
+}
+.frame {
+    margin: 0 auto;
+    padding: 10px;
+    border-collapse: collapse;
+    width: 80%; 
+}
+#textYourPlayers {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: left;
+}
+#reset {
+    display: none;
+    font-size: 40px;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#reset:hover {
+    background-color: rgb(224, 130, 76); 
+}
+#titleChoosePlayer {
+    display: none;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.frame td {
+    vertical-align: top; 
+    padding: 10px;
+}
+#playFieldCell {
+    display: none;
+    text-align: center;
+    border-collapse: collapse;
+    width: 800px;
+}
+.playFieldCell td {
+    width: 150px; /* Breite der Tasten */
+    height: 150px; /* Höhe der Tasten */
+    text-align: center; 
+    vertical-align: middle;
+    border: 2px solid rgb(200, 200, 200); /* Leichte Umrandung */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    padding: 0;
+}
+.playButtons {
+    width: 100%; /* füllt die Zelle horizontal */
+    height: 100%; /* füllt die Zelle vertikal */
+    font-size: 1.5rem; 
+    border: none; 
+    box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.3); 
+    cursor: pointer; /* Zeiger-Cursor beim Hover */
+    transition: background-color 0.3s, color 0.3s; /* Sanfter Übergang bei Hover */
+}
+.playButtons:hover {
+    background-color: rgb(224, 130, 76); 
+}
+.field-cell {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0); /* Unsichtbar */
+    border: none;
+    cursor: pointer;
+    z-index: 2; /* Über dem Bild */
+    font-size: 3rem;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.choosePlayerCell {
+    text-align: center;
+}
+
+#choosePlayer {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+#choosePlayer img {
+    height: 120px;
+    width: 150px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    border-radius: 10px;
+}
+
+#choosePlayer img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

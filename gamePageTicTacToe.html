@@ -1,33 +1,62 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TicTacToe</title>
-        <style>
-            h1 {
-                font-size: 45px;
-            }
-            button {
-                font-size: 40px;
-            }
-            .layout-container {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    height: 90vh;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="layout-container">
-            <h1>TicTacToe</h1>
-            <button id="start-button">Play</button>
-            <img id="imgPlayingField" src="tic-tac-toe-template.jpg" style="display:none">
-            <script src="./playingField.js"> </script>
-        </div>
-            
-        
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <nav>
+        <h1>TicTacToe</h1>
+        <button id="start-button">Play</button>
+    </nav>
+    <table class="frame" id="frame">
+        <tr>
+            <td>
+                <button id="reset">Reset</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p id="textYourPlayers"></p>
+                
+            </td>
+            <td>
+                <p id="titleChoosePlayer">Choose your player</p>
+            </td>     
+
+        </tr>
+        <tr>
+            <td class="playFieldCell" id="playFieldCell">
+                <table>
+                    <tr>
+                        <td class="playButtons" id="0"></td>
+                        <td class="playButtons" id="1"></td>
+                        <td class="playButtons" id="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="playButtons" id="3"></td>
+                        <td class="playButtons" id="4"></td>
+                        <td class="playButtons" id="5"></td>
+                    </tr>
+                    <tr>
+                        <td class="playButtons" id="6"></td>
+                        <td class="playButtons" id="7"></td>
+                        <td class="playButtons" id="8"></td>
+                    </tr>
+                </table>    
+            </td>
+            <td class="choosePlayerCell">
+                <div class="choosePlayer" id="choosePlayer">
+                    <img id="Cat" src="images/players/cat.png" alt="Cat">
+                    <img id="Pizza" src="images/players/pizza.png" alt="Pizza">
+                    <img id="Bike" src="images/players/bike.png" alt="Bike">
+                    <img id="Plant" src="images/players/plant.png" alt="Plant">
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script src="scripts/playingField.js"> </script>
+</body>
 </html>
