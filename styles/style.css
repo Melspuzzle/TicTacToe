@@ -28,12 +28,14 @@ h1 {
 }
 #frame {
     display: none;
-}
-.frame {
     margin: 0 auto;
     padding: 10px;
     border-collapse: collapse;
-    width: 80%; 
+    width: 80%;
+}
+.frame td {
+    vertical-align: top; 
+    padding: 10px;
 }
 #textYourPlayers {
     font-size: 28px;
@@ -60,17 +62,13 @@ h1 {
     text-align: center;
 }
 
-.frame td {
-    vertical-align: top; 
-    padding: 10px;
-}
 #playFieldCell {
     display: none;
     text-align: center;
     border-collapse: collapse;
     width: 800px;
 }
-.playFieldCell td {
+#playFieldCell td {
     width: 150px; /* Breite der Tasten */
     height: 150px; /* Höhe der Tasten */
     text-align: center; 
@@ -92,24 +90,6 @@ h1 {
 }
 .playButtons:hover {
     background-color: rgb(224, 130, 76); 
-}
-.field-cell {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0); /* Unsichtbar */
-    border: none;
-    cursor: pointer;
-    z-index: 2; /* Über dem Bild */
-    font-size: 3rem;
-    font-weight: bold;
-    color: black;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-.choosePlayerCell {
-    text-align: center;
 }
 
 #choosePlayer {
