@@ -19,6 +19,7 @@ function handleClickChoosePlayer(event) {
     player2Element = elementId;
     selectedPlayers.push(elementId);
     console.log(`Player 2 ausgewählt: ${player2Element}`);
+    gameActive = true;
     textYourPlayers.insertAdjacentHTML("beforeend", "  <br>Player 2: " + player2Element);
     setTimeout(() => {
       alert("Es wurden zwei Spieler ausgewählt, du kannst nun spielen. Viel Spaß!");
@@ -37,31 +38,19 @@ function handleClickChoosePlayer(event) {
   }
 }
 /**
- * Handles click event of the reset button after players have been selected
- */
-function handleClickReset(resetButton) {
-  resetButton.addEventListener("click", () => {
-    selectedPlayers = [];
-    player1Element = "";
-    player2Element = "";
-    textYourPlayers.innerHTML = "";
-    resetButton.style.display = "none";
-    document.querySelectorAll('.playButtons').forEach(button => {
-      button.innerHTML = "";
-      button.disabled = false;
-      button.classList.remove('hoverActive');
-    });
-  })
-}
-/**
  * Handles gamePlay after players have been selected
  */
 function gameplay(playGround, player1Element, player2Element) {
+
   let currentPlayer = player1Element;
   Array.from(playGround.elements).forEach(element => {
     if (element.tagName != "BUTTON") return;
     element.addEventListener("click", (event) => {
       event.preventDefault();
+      if (!gameActive) {
+        alert("Bitte wähle zuerst zwei Spieler aus, bevor du das Spielfeld erneut benutzen kannst.");
+        return;
+      }
       if (element.disabled) return;
       const currentPlayerImg = document.getElementById(currentPlayer);
       if (!currentPlayerImg) {
@@ -85,7 +74,27 @@ function gameplay(playGround, player1Element, player2Element) {
     });
   });
 }
-
+/**
+ * Handles click event of the reset button after players have been selected
+ */
+function handleClickReset(resetButton) {
+  resetButton.addEventListener("click", () => {
+    selectedPlayers = [];
+    player1Element = "";
+    player2Element = "";
+    textYourPlayers.innerHTML = "";
+    resetButton.style.display = "none";
+    resetGameState();
+    gameActive = false;
+  })
+}
+function resetGameState() {
+  document.querySelectorAll('.playButtons').forEach(button => {
+    button.innerHTML = "";
+    button.disabled = false;
+    button.classList.remove('hoverActive');
+  });
+}
 //DOM elements
 const startButton = document.getElementById("start-button");
 const choosePlayer = document.getElementById("choosePlayer");
@@ -96,6 +105,8 @@ const resetButton = document.getElementById("resetButton");
 const textYourPlayers = document.getElementById("textYourPlayers");
 const playGround = document.getElementById("playGround");
 
+let gameActive = true;
+
 // show Game Setup
 startButton.addEventListener("click", () => {
   frame.style.display = "block";
@@ -105,15 +116,17 @@ startButton.addEventListener("click", () => {
   titleChoosePlayer.style.display = "block";
 })
 
-//handle player selection
+//handle player selection and start gameplay in function handleClickChoosePlayer
 let player1Element = "";
 let player2Element = "";
 let selectedPlayers = [];
 const players = document.querySelectorAll('.choosePlayer');
+
 players.forEach(element => {
   element.addEventListener('click', handleClickChoosePlayer);
 });
 
+//reset for all game elements to start again
 handleClickReset(resetButton);
 
 
