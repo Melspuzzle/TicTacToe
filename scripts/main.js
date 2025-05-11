@@ -25,8 +25,8 @@ startButton.addEventListener("click", () => {
 
 // player selection and updates game state
 players.forEach(element => {
-    element.addEventListener("click", (e) => {
-        handleClickChoosePlayer(e, updateUI, startGame);
+    element.addEventListener("click", (event) => {
+        handleClickChoosePlayer(event, updateUI, startGame);
     });
 });
 

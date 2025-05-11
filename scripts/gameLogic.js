@@ -12,12 +12,16 @@ export function handleClickChoosePlayer(event, updateUI, startGame) {
         GameState.player1Element = elementId;
         GameState.selectedPlayers.push(elementId);
         updateUI(1, elementId);
-    } else if (GameState.player2Element === "") {
+    }
+    else if (GameState.player2Element === "") {
         GameState.player2Element = elementId;
         GameState.selectedPlayers.push(elementId);
         updateUI(2, elementId);
         alert("Zwei Spieler wurden ausgewählt, du kannst nun spielen!");
         GameState.gameActive = true;
+        document.querySelectorAll('.playerToken').forEach(img => {
+            img.classList.remove('hoverActive');
+        });
         startGame();
     }
 }
@@ -34,6 +38,8 @@ export function gameplay(playGround) {
             const currentPlayerImg = document.getElementById(currentPlayer);
             if (!currentPlayerImg) return;
 
+
+            //show images as players in playing field cells
             const img = document.createElement("img");
             img.src = currentPlayerImg.src;
             img.alt = currentPlayer;
@@ -45,6 +51,17 @@ export function gameplay(playGround) {
             element.disabled = true;
             element.classList.remove("hoverActive");
 
+            //save selected position of the player
+            const index = parseInt(element.id);
+            GameState.board[index] = currentPlayer;
+
+            const winner = checkWinner();
+            if (winner) {
+                alert("Spieler " + winner + " hat gewonnen!");
+                GameState.gameActive = false;
+                return;
+            }
+            //handle order of play
             if (currentPlayer === GameState.player1Element) {
                 currentPlayer = GameState.player2Element;
             } else {
@@ -54,11 +71,29 @@ export function gameplay(playGround) {
     });
 }
 
+function checkWinner() {
+    for (let combination of GameState.winningCombinations) {
+        const [a, b, c] = combination;
+
+        if (
+            GameState.board[a] &&
+            GameState.board[a] === GameState.board[b] &&
+            GameState.board[a] === GameState.board[c]
+        ) {
+            return GameState.board[a];
+        }
+    }
+    return null;
+}
+
 export function resetGameUI(playButtons, textYourPlayers, resetButton) {
     playButtons.forEach(button => {
         button.innerHTML = "";
         button.disabled = false;
         button.classList.remove("hoverActive");
+    });
+    document.querySelectorAll('.playerToken').forEach(img => {
+        img.classList.add('hoverActive');
     });
     textYourPlayers.innerHTML = "";
     resetButton.style.display = "none";
