@@ -13,6 +13,8 @@ const textYourPlayers = document.getElementById("textYourPlayers");
 const playGround = document.getElementById("playGround");
 const players = document.querySelectorAll(".playerToken");
 const playButtons = document.querySelectorAll(".playButtons");
+const notification = document.getElementById("notification");
+const notificationText = document.getElementById("notificationText");
 
 // show playground
 startButton.addEventListener("click", () => {
@@ -28,6 +30,13 @@ players.forEach(element => {
     element.addEventListener("click", (event) => {
         handleClickChoosePlayer(event, updateUI, startGame);
     });
+});
+
+//close notification by user
+document.getElementById("closeNotification").addEventListener("click", () => {
+    const notification = document.getElementById("notification");
+    notification.classList.remove("show");
+    notification.classList.add("hide");
 });
 
 // Handles gamePlay after players have been selected
@@ -51,3 +60,22 @@ resetButton.addEventListener("click", () => {
     GameState.reset();
     resetGameUI(playButtons, textYourPlayers, resetButton);
 });
+
+export function showNotification(message) {
+    notification.classList.remove("show");
+    notification.classList.add("hide");
+
+    notificationText.textContent = message;
+
+    setTimeout(() => {
+        notification.classList.remove("hide");
+        notification.classList.add("show");
+    }, 10);
+
+    setTimeout(() => {
+        notification.classList.remove("show");
+        notification.classList.add("hide");
+    }, 3000);
+}
+
+//doofe lösung mit hide show mehrmals, damit es richtig greift

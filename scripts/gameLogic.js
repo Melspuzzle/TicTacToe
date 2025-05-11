@@ -1,10 +1,11 @@
 import { GameState } from './gameState.js';
+import { showNotification } from './main.js';
 
 export function handleClickChoosePlayer(event, updateUI, startGame) {
     const elementId = event.target.id;
 
     if (GameState.selectedPlayers.includes(elementId)) {
-        alert("Dieser Spieler wurde bereits ausgewählt.");
+        showNotification("Dieser Spieler wurde bereits ausgewählt.");
         return;
     }
 
@@ -17,7 +18,7 @@ export function handleClickChoosePlayer(event, updateUI, startGame) {
         GameState.player2Element = elementId;
         GameState.selectedPlayers.push(elementId);
         updateUI(2, elementId);
-        alert("Zwei Spieler wurden ausgewählt, du kannst nun spielen!");
+        showNotification("Zwei Spieler wurden ausgewählt, du kannst nun spielen!");
         GameState.gameActive = true;
         document.querySelectorAll('.playerToken').forEach(img => {
             img.classList.remove('hoverActive');
@@ -57,7 +58,7 @@ export function gameplay(playGround) {
 
             const winner = checkWinner();
             if (winner) {
-                alert("Spieler " + winner + " hat gewonnen!");
+                showNotification("Spieler " + winner + " hat gewonnen!");
                 GameState.gameActive = false;
                 return;
             }
