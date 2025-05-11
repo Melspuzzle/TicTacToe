@@ -8,9 +8,6 @@ import {
 // DOM elements
 const startButton = document.getElementById("start-button");
 const choosePlayer = document.getElementById("choosePlayer");
-const frame = document.getElementById("frame");
-const playFieldCell = document.getElementById("playFieldCell");
-const titleChoosePlayer = document.getElementById("titleChoosePlayer");
 const resetButton = document.getElementById("resetButton");
 const textYourPlayers = document.getElementById("textYourPlayers");
 const playGround = document.getElementById("playGround");
