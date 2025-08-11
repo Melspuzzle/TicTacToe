@@ -85,7 +85,7 @@ function checkWinner() {
         }
     }
     return null;
-}
+} 
 
 export function resetGameUI(playButtons, textYourPlayers, resetButton) {
     playButtons.forEach(button => {
