@@ -2,10 +2,89 @@ html {
     background-color: rgb(136, 182, 222);
     font-family: Arial, sans-serif;
 }
+/* Header und Navigation */
+.main-header {
+    background-color: var(--primary-color);
+    padding: 1rem 5%; /* Innenabstand: 1rem oben/unten, 5% links/rechts. */
+}
 
+.main-nav {
+    display: flex; /* Flexbox ist ein modernes Layout-Modell. Es macht das Anordnen von Elementen sehr einfach. */
+    justify-content: space-between; /* Verteilt den Platz: Das erste Element (Logo) geht ganz nach links, das letzte (Menü) ganz nach rechts. */
+    align-items: center; /* Zentriert die Elemente vertikal in der Mitte. */
+}
+
+.main-nav ul {
+    list-style: none; /* Entfernt die Aufzählungspunkte der Liste. */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Auch hier Flexbox, um die Menüpunkte nebeneinander anzuordnen. */
+    /* gap: 2rem; <-- Dieser wird jetzt durch das Dropdown-Styling ersetzt */
+}
+
+.main-nav a {
+    color: black;
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.3s ease; /* Sorgt für einen weichen Übergang, wenn sich die Farbe ändert (beim Hover). */
+    padding: 0.5rem 1rem; /* Füge hier ein Padding hinzu, damit der Hover-Bereich größer ist */
+    font-size: 1.5rem;
+}
+
+/* Der :hover-Selektor wird aktiv, wenn man mit der Maus über das Element fährt. */
+.main-nav a:hover {
+    color: var(--accent-color); /* Ändert die Farbe auf unsere Akzentfarbe. */
+}
+
+/* Zusätzliche Stile für das Dropdown-Menü */
+.dropdown {
+    position: relative; /* Wichtig für die Positionierung des Dropdown-Inhalts */
+    display: inline-block; /* Sorgt dafür, dass es im Fluss der Navigation bleibt */
+}
+
+.dropbtn {
+    /* Die Stile von .main-nav a gelten auch hier, aber wir können sie überschreiben */
+    text-align: center;
+    padding: 0.5rem 1rem; /* Konsistentes Padding für den "Projekte"-Button */
+    cursor: pointer; /* Zeigt an, dass es klickbar ist */
+}
+
+.dropdown-content {
+    display: none; /* Standardmäßig ausgeblendet */
+    position: absolute; /* Absolut positioniert relativ zum .dropdown-Elternelement */
+    background-color: var(--primary-color); /* Hintergrundfarbe des Dropdowns */
+    min-width: 160px; /* Mindestbreite des Dropdowns */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Dezenter Schatten */
+    z-index: 1; /* Stellt sicher, dass es über anderen Inhalten liegt */
+    border-radius: 5px; /* Leichte Abrundung */
+    padding: 0.5rem 0; /* Innenabstand oben/unten */
+    top: calc(100% + 10px); /* Platziert das Dropdown unter dem "Projekte"-Link, mit etwas Abstand */
+    right: 0; /* Richtet das Dropdown an der rechten Seite des "Projekte"-Links aus */
+}
+
+.dropdown-content a {
+    color: black; /* Farbe der Links im Dropdown */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; /* Macht jeden Link zu einem Blockelement, damit er die volle Breite einnimmt */
+    text-align: left; /* Text linksbündig */
+    font-weight: 300;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1.3rem;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--accent-color); /* Hintergrundfarbe beim Hover */
+    color:  rgb(200, 110, 60);
+}
+
+/* Zeigt das Dropdown-Menü an, wenn man über das Elternelement (mit der Klasse .dropdown) fährt */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 nav {
     text-align: center; 
-    font-size: 40px;
+    font-size: 1.5rem;
     margin: 0; 
     padding: 5px 0;
 }
@@ -24,7 +103,21 @@ h1 {
 }
 
 #start-button:hover {
-    background-color: #45a049;
+    background-color:  rgb(200, 110, 60);
+}
+#return-button {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(224, 130, 76);
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+ 
+#return-button:hover {
+    background-color: rgb(200, 110, 60);
 }
 #frame {
     display: none;
